@@ -5,7 +5,8 @@
 #include "Array.hpp"
 
 #define main original_main
-#include ""
+#include "OriginalTest.cpp"
+#undef main
 
 // ─── 헬퍼 함수 ───────────────────────────────────────────────────────────────
 
@@ -109,7 +110,6 @@ void manualTest() {
     std::cout << "sArr contents: ";
     printStringArray(sArr);
 
-    // const 참조로도 읽기만 가능
     const Array<std::string>& cs = sArr;
     try {
         (void)cs[cs.size()];
@@ -118,4 +118,14 @@ void manualTest() {
     }
 
     std::cout << "\nAll tests completed.\n\n";
+}
+
+int main() {
+    std::cout << std::endl << GREEN << "===== 원본 테스트 시작 =====\n" << RESET;
+    original_main(0, 0);
+    std::cout << GREEN << "===== 원본 테스트 완료 =====\n" << RESET ;
+
+    manualTest();
+    std::cout << "모든 테스트 완료!\n";
+    return 0;
 }
